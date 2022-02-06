@@ -10,6 +10,7 @@
  */
 
 export async function fetchNui<T = any>(eventName: string, data?: any): Promise<T> {
+  console.log('from fetchNui 1');
   const options = {
     method: 'post',
     headers: {
@@ -17,12 +18,16 @@ export async function fetchNui<T = any>(eventName: string, data?: any): Promise<
     },
     body: JSON.stringify(data),
   };
-
+  
+  console.log('from fetchNui 2');
   const resourceName = (window as any).GetParentResourceName ? (window as any).GetParentResourceName() : 'nui-frame-app';
-
-  const resp = await fetch(`https://${resourceName}/${eventName}`, options);
-
+  console.log('from fetchNui 3');
+  
+  const resp = await fetch(`https://${resourceName}/${eventName}?random=` + Math.floor(Math.random() * 999), options);
+  
+  console.log('from fetchNui 4');
   const respFormatted = await resp.json()
+  console.log('from fetchNui 5');
 
   return respFormatted
 }
