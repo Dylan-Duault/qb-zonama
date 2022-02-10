@@ -12,17 +12,16 @@ import {
 
 // import check icon from react-icons/go
 import { GoCheck } from "react-icons/go";
-import { itemInterface } from "../services/ItemService";
+import { IItem } from "../stores/Items";
 
 interface Props {
-  item: itemInterface;
+  item: IItem;
 }
 
 const Item: React.FC<Props> = ({ item }) => {
   return (
-    <Center mx={5} py={6}>
+    <Box textAlign={"center"}>
       <Box
-        w={"100%"}
         bg={useColorModeValue("white", "gray.800")}
         boxShadow={"xl"}
         rounded={"md"}
@@ -43,12 +42,12 @@ const Item: React.FC<Props> = ({ item }) => {
             color={"green.500"}
             rounded={"full"}
           >
-            {item.item_name}
+            {item.name}
           </Text>
           <Stack direction={"row"} align={"center"} justify={"center"}>
             <Text fontSize={"3xl"}>$</Text>
             <Text fontSize={"6xl"} fontWeight={800}>
-              {item.item_price}
+              {item.price}
             </Text>
             <Text color={"gray.500"}></Text>
           </Stack>
@@ -56,7 +55,7 @@ const Item: React.FC<Props> = ({ item }) => {
 
         <Box bg={useColorModeValue("gray.50", "gray.900")} px={6} py={10}>
           <Text overflowY={"auto"} h={100}>
-            {item.item_description}
+            {item.description}
           </Text>
 
           <Button
@@ -78,7 +77,7 @@ const Item: React.FC<Props> = ({ item }) => {
           </Button>
         </Box>
       </Box>
-    </Center>
+    </Box>
   );
 };
 

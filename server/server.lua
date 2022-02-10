@@ -7,7 +7,7 @@ QBCore.Functions.CreateCallback('zonama:server:getItems', function(source, cb)
     if player then
         -- get all items and join category
         local items = MySQL.Sync.fetchAll(
-            "SELECT items.name AS 'item_name', items.price AS 'item_price', items.image AS 'item_image', items.description AS 'item_description', category.name AS 'category_name' FROM za_items items INNER JOIN za_categories category ON category.id = items.category_id;")
+            "SELECT items.id AS 'id', items.name AS 'name', items.price AS 'price', items.image AS 'image', items.description AS 'description', category.name AS 'category_name' FROM za_items items INNER JOIN za_categories category ON category.id = items.category_id;")
         cb(items)
     end
 end)

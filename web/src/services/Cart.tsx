@@ -1,20 +1,20 @@
-import { itemInterface } from "./ItemService";
 import { useNuiEvent } from "../hooks/useNuiEvent";
+import { IItem } from "../stores/Items";
 
 const Cart = () => {
-  const items: itemInterface[] = [];
+  const items: IItem[] = [];
 
   const getCartPrice = (): number => {
     return items.reduce((acc, item) => {
-      return acc + item.item_price;
+      return acc + item.price;
     }, 0);
   };
 
-  const addItem = (item: itemInterface): void => {
+  const addItem = (item: IItem): void => {
     items.push(item);
   };
 
-  const removeItem = (item: itemInterface): void => {
+  const removeItem = (item: IItem): void => {
     items.splice(items.indexOf(item), 1);
   };
 
