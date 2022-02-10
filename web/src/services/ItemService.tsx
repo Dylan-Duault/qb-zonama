@@ -1,7 +1,6 @@
-import { fetchNui } from "../utils/fetchNui";
-import { IItem, selectItemsState } from "../stores/Items";
 import { ICategory } from "../stores/Categories";
-import { useRecoilState } from "recoil";
+import { IItem } from "../stores/Items";
+import { fetchNui } from "../utils/fetchNui";
 
 const fakerItems: IItem[] = [
   {

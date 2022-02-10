@@ -1,14 +1,13 @@
+import { Box, Button, Flex, Icon, Spacer, Text } from "@chakra-ui/react";
 import React, { useCallback, useEffect, useState } from "react";
-import { Box, Flex, Icon, Spacer, Text, Button } from "@chakra-ui/react";
-
-import { ReactComponent as ZonamaLogo } from "../assets/svg/logo.svg";
-import { GoLocation } from "react-icons/go";
 import { GiShoppingCart } from "react-icons/gi";
-import { Routes, useNavigate } from "react-router-dom";
-import { useRecoilState } from "recoil";
-import { ICategory, selectCategoriesState } from "../stores/Categories";
-import { selectItemsState } from "../stores/Items";
+import { GoLocation } from "react-icons/go";
+import { useNavigate } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+import { ReactComponent as ZonamaLogo } from "../assets/svg/logo.svg";
 import { getCategories } from "../services/ItemService";
+import { ICategory } from "../stores/Categories";
+import { selectItemsState } from "../stores/Items";
 
 const NavBar: React.FC = () => {
   const navigate = useNavigate();
@@ -17,14 +16,14 @@ const NavBar: React.FC = () => {
     [navigate]
   );
 
-  const [items, setItems] = useRecoilState(selectItemsState);
+  const items = useRecoilValue(selectItemsState);
   const [categories, setCategories] = useState([] as ICategory[]);
 
   useEffect(() => {
     getCategories(items).then((categories) => {
       setCategories(categories);
     });
-  }, []);
+  }, [items]);
 
   return (
     <Flex

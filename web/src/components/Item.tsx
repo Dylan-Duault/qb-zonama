@@ -1,7 +1,4 @@
-import { Box, Text, Stack, Button, useColorModeValue } from "@chakra-ui/react";
-
-// import check icon from react-icons/go
-import { GoCheck } from "react-icons/go";
+import { Box, Button, Stack, Text, useColorModeValue } from "@chakra-ui/react";
 import { IItem } from "../stores/Items";
 
 interface Props {

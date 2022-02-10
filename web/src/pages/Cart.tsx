@@ -1,5 +1,5 @@
-import React, { useCallback } from "react";
 import { Flex } from "@chakra-ui/react";
+import React from "react";
 
 const Cart: React.FC = () => {
   return <Flex>CART</Flex>;

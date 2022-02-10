@@ -1,19 +1,10 @@
-import {
-  Box,
-  Button,
-  Center,
-  Container,
-  Flex,
-  Heading,
-  Icon,
-  Text,
-} from "@chakra-ui/react";
+import { Box, Button, Container, Flex, Heading, Icon } from "@chakra-ui/react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Item from "../components/Item";
 
 // Import Swiper styles
 import "swiper/css";
-import { useRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
 import { IItem, selectItemsState } from "../stores/Items";
 import { useEffect, useState } from "react";
 
@@ -27,7 +18,7 @@ interface Props {
 }
 
 const ItemSwiper: React.FC<Props> = ({ category }) => {
-  const [items, setItems] = useRecoilState(selectItemsState);
+  const items = useRecoilValue(selectItemsState);
   const [itemsFromCategory, setItemsFromCategory] = useState([] as IItem[]);
   const [loaded, setLoaded] = useState(true);
 
@@ -37,7 +28,7 @@ const ItemSwiper: React.FC<Props> = ({ category }) => {
     );
 
     setItemsFromCategory(_itemsFromCategory);
-  }, [category]);
+  }, [category, items]);
 
   useEffect(() => {
     setLoaded(true);
@@ -70,7 +61,7 @@ const ItemSwiper: React.FC<Props> = ({ category }) => {
             slidesPerView={
               itemsFromCategory.length > 4 ? 4 : itemsFromCategory.length
             }
-            autoplay={{ delay: 500000 }}
+            autoplay={{ delay: 5000 }}
             navigation={{
               prevEl: ".prev-" + category,
               nextEl: ".next-" + category,

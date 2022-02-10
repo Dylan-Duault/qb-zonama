@@ -1,5 +1,4 @@
 import { atom, selector } from "recoil";
-import { ICategory } from "./Categories";
 import { getItems } from "../services/ItemService";
 
 export interface IItem {
@@ -10,8 +9,6 @@ export interface IItem {
   image: string;
   category_name: string;
 }
-
-const initializedItems: IItem[] = [];
 
 export const allItemsState = selector<IItem[]>({
   key: "allItemsState",

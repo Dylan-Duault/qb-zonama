@@ -1,13 +1,13 @@
+import { Box } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
-import { Box, Flex } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
+import { useRecoilValue } from "recoil";
 import { IItem, selectItemsState } from "../stores/Items";
-import { useRecoilState } from "recoil";
 
 const Category: React.FC = () => {
   let { key } = useParams();
 
-  const [items, setItems] = useRecoilState(selectItemsState);
+  const items = useRecoilValue(selectItemsState);
   const [itemsFromCategory, setItemsFromCategory] = useState([] as IItem[]);
 
   useEffect(() => {
@@ -16,7 +16,7 @@ const Category: React.FC = () => {
     );
 
     setItemsFromCategory(_itemsFromCategory);
-  }, [key]);
+  }, [key, items]);
 
   return (
     <Box>

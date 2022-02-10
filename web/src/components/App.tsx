@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { debugData } from "../utils/debugData";
-import { fetchNui } from "../utils/fetchNui";
-import { Box, Flex, Text } from "@chakra-ui/react";
-import NavBar from "./NavBar";
-import { Routes, Route, Link, useLocation } from "react-router-dom";
-import Home from "../pages/Home";
-import Category from "../pages/Category";
+import { Box, Flex } from "@chakra-ui/react";
+import React from "react";
+import { Route, Routes } from "react-router-dom";
 import Cart from "../pages/Cart";
+import Category from "../pages/Category";
+import Home from "../pages/Home";
+import { debugData } from "../utils/debugData";
+import NavBar from "./NavBar";
 
 // This will set the NUI to visible if we are
 // developing in browser
@@ -18,8 +17,6 @@ debugData([
 ]);
 
 const App: React.FC = () => {
-  const location = useLocation();
-
   return (
     <Flex
       textAlign={"center"}

@@ -1,20 +1,20 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { Box, Button, Flex, Heading, Stack, Text } from "@chakra-ui/react";
+import { Heading, Stack, Text } from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
+import { useRecoilValue } from "recoil";
 import ItemSwiper from "../components/ItemSwiper";
-import { IItem, selectItemsState } from "../stores/Items";
-import { ICategory } from "../stores/Categories";
 import { getCategories } from "../services/ItemService";
-import { useRecoilState } from "recoil";
+import { ICategory } from "../stores/Categories";
+import { selectItemsState } from "../stores/Items";
 
 const Home: React.FC = () => {
-  const [items, setItems] = useRecoilState(selectItemsState);
+  const items = useRecoilValue(selectItemsState);
   const [categories, setCategories] = useState([] as ICategory[]);
 
   useEffect(() => {
     getCategories(items).then((categories) => {
       setCategories(categories);
     });
-  }, []);
+  }, [items]);
 
   return (
     <Stack
@@ -42,20 +42,6 @@ const Home: React.FC = () => {
       ))}
     </Stack>
   );
-};
-
-const scrollbarStyles = {
-  "&::-webkit-scrollbar": {
-    width: "4px",
-  },
-  "&::-webkit-scrollbar-track": {
-    width: "8px",
-    backgroundColor: "#eaeaea",
-  },
-  "&::-webkit-scrollbar-thumb": {
-    backgroundColor: "rgb(50, 50, 50, 0.8)",
-    borderRadius: "50px",
-  },
 };
 
 export default Home;

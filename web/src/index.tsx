@@ -1,13 +1,11 @@
+import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./components/App";
-import { VisibilityProvider } from "./providers/VisibilityProvider";
-import { ChakraProvider } from "@chakra-ui/react";
 import { BrowserRouter } from "react-router-dom";
-import { extendTheme } from "@chakra-ui/react";
-
 import { RecoilRoot } from "recoil";
+import App from "./components/App";
+import "./index.css";
+import { VisibilityProvider } from "./providers/VisibilityProvider";
 
 const theme = extendTheme({
   components: {
@@ -33,15 +31,15 @@ const theme = extendTheme({
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <RecoilRoot>
-        <VisibilityProvider>
+      <VisibilityProvider>
+        <RecoilRoot>
           <ChakraProvider theme={theme}>
             <React.Suspense fallback={<div>Loading...</div>}>
               <App />
             </React.Suspense>
           </ChakraProvider>
-        </VisibilityProvider>
-      </RecoilRoot>
+        </RecoilRoot>
+      </VisibilityProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
