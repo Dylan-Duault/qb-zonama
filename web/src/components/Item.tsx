@@ -1,14 +1,4 @@
-import {
-  Box,
-  Center,
-  Text,
-  Stack,
-  List,
-  ListItem,
-  ListIcon,
-  Button,
-  useColorModeValue,
-} from "@chakra-ui/react";
+import { Box, Text, Stack, Button, useColorModeValue } from "@chakra-ui/react";
 
 // import check icon from react-icons/go
 import { GoCheck } from "react-icons/go";
@@ -20,7 +10,7 @@ interface Props {
 
 const Item: React.FC<Props> = ({ item }) => {
   return (
-    <Box textAlign={"center"}>
+    <Box textAlign={"center"} px={4} py={10} minW={"20vw"}>
       <Box
         bg={useColorModeValue("white", "gray.800")}
         boxShadow={"xl"}
@@ -61,10 +51,11 @@ const Item: React.FC<Props> = ({ item }) => {
           <Button
             colorScheme={"dark"}
             mt={10}
+            maxW={"200px"}
             w={"full"}
             bg={"#ffa41c"}
             color={"white"}
-            rounded={"xl"}
+            rounded={"md"}
             boxShadow={"0 5px 20px 0px rgb(72 187 120 / 43%)"}
             _hover={{
               bg: "#e7951a",

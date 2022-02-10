@@ -70,8 +70,6 @@ const ItemSwiper: React.FC<Props> = ({ category }) => {
             slidesPerView={
               itemsFromCategory.length > 4 ? 4 : itemsFromCategory.length
             }
-            // @ts-ignore
-            // spaceBetween="40"
             autoplay={{ delay: 500000 }}
             navigation={{
               prevEl: ".prev-" + category,
