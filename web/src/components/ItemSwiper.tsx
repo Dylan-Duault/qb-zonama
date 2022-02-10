@@ -37,16 +37,17 @@ const ItemSwiper: React.FC<Props> = ({ category }) => {
   if (loaded) {
     return (
       <Container maxW="container.4xl" textAlign={"center"} py={5}>
-        <Heading fontWeight={600} pt={4} backgroundColor={"#fff8f5"}>
+        <Heading fontWeight={600} pt={4} backgroundColor={"#f2f9ff"}>
           {category}
         </Heading>
         <Flex
           boxShadow="sm"
           textAlign={"left"}
           alignItems={"center"}
-          backgroundColor={"#fff8f5"}
+          backgroundColor={"#f2f9ff"}
         >
           <Button
+            display={itemsFromCategory.length > 4 ? "block" : "none"}
             className={"prev-" + category}
             my={5}
             height={"300px"}
@@ -74,6 +75,7 @@ const ItemSwiper: React.FC<Props> = ({ category }) => {
             ))}
           </Swiper>
           <Button
+            display={itemsFromCategory.length > 4 ? "block" : "none"}
             className={"next-" + category}
             my={5}
             height={"300px"}
