@@ -52,9 +52,9 @@ INSERT INTO `za_categories` (`id`, `name`) VALUES
 
 -- Seed fake items
 INSERT INTO `za_items` (`id`, `name`, `description`, `price`, `image`, `category_id`) VALUES
-(1, 'Apple', 'A red fruit', 10, 'apple.png', 1),
-(2, 'Orange', 'A orange fruit', 10, 'orange.png', 1),
-(3, 'Banana', 'A yellow fruit', 10, 'banana.png', 1),
+(, 'Banana', 'A yellow fruit', 10, 'banana.png', 1),
+(2, 'Orange', 'An orange fruit', 10, 'orange.png', 1),
+(3, 'Apple', 'A red fruit', 10, 'apple.png', 1),
 (4, 'Coca Cola', 'A soft drink', 10, 'coca-cola.png', 2),
 (5, 'Pepsi', 'A soft drink', 10, 'pepsi.png', 2),
 (6, 'T-shirt', 'A t-shirt', 10, 't-shirt.png', 3),
@@ -63,7 +63,7 @@ INSERT INTO `za_items` (`id`, `name`, `description`, `price`, `image`, `category
 (9, 'Glasses', 'A pair of glasses', 10, 'glasses.png', 4),
 (10, 'Watch', 'A watch', 10, 'watch.png', 4),
 (11, 'Headphones', 'A pair of headphones', 10, 'headphones.png', 4),
-(12, 'Iphone', 'A iphone', 10, 'iphone.png', 6),
+(12, 'Iphone', 'An iphone', 10, 'iphone.png', 6),
 (13, 'Ipad', 'An ipad', 10, 'ipad.png', 6),
 (14, 'Ipod', 'An ipod', 10, 'ipod.png', 6),
 (15, 'Laptop', 'A laptop', 10, 'laptop.png', 6),
