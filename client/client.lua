@@ -16,20 +16,6 @@ RegisterNUICallback('hideFrame', function(_, cb)
     cb({})
 end)
 
-RegisterNUICallback('getClientData', function(data, cb)
-    debugPrint('Data sent by React', json.encode(data))
-
-    -- Lets send back client coords to the React frame for use
-    local curCoords = GetEntityCoords(PlayerPedId())
-
-    local retData<const> = {
-        x = curCoords.x,
-        y = curCoords.y,
-        z = curCoords.z
-    }
-    cb(retData)
-end)
-
 -- Contact server to get a list of za_items from the database
 RegisterNetEvent('zonama:client:getItems', function()
     -- Contact server with callback
@@ -49,4 +35,19 @@ RegisterNUICallback('getItems', function(data, cb)
     QBCore.Functions.TriggerCallback('zonama:server:getItems', function(items)
         cb(items)
     end)
+end)
+
+exports['qb-target']:AddTargetModel(QBZonama.Monitors, {
+    options = {{
+        type = "client",
+        event = "zonama:client:open-nui",
+        icon = "fa-brands fa-amazon",
+        label = "Open Zonama",
+        price = 5
+    }},
+    distance = 2.5
+})
+
+RegisterNetEvent('zonama:client:open-nui', function(data)
+    toggleNuiFrame(true)
 end)

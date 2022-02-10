@@ -12,6 +12,8 @@ ui_page 'web/build/index.html'
 
 client_script "client/**/*"
 
+shared_script "shared/**/*"
+
 server_scripts {"server/**/*", '@oxmysql/lib/MySQL.lua'}
 
 files {'web/build/index.html', 'web/build/**/*'}
