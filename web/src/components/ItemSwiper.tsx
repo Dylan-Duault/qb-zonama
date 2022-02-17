@@ -70,7 +70,9 @@ const ItemSwiper: React.FC<Props> = ({ category }) => {
           >
             {itemsFromCategory?.map((item, index) => (
               <SwiperSlide key={index}>
-                <Item item={item} />
+                <Box py={10}>
+                  <Item item={item} />
+                </Box>
               </SwiperSlide>
             ))}
           </Swiper>

@@ -16,25 +16,18 @@ RegisterNUICallback('hideFrame', function(_, cb)
     cb({})
 end)
 
--- Contact server to get a list of za_items from the database
-RegisterNetEvent('zonama:client:getItems', function()
+RegisterNUICallback('zonama:client:get-items', function(_, cb)
     -- Contact server with callback
-
-    QBCore.Functions.TriggerCallback('zonama:server:getItems', function(items)
-        Citizen.Trace(json.encode(items))
-    end)
-end)
-
--- Register command to call getItems
-RegisterCommand('zonama-get-items', function()
-    TriggerEvent('zonama:client:getItems')
-end)
-
-RegisterNUICallback('getItems', function(data, cb)
-    local data = nil
-    QBCore.Functions.TriggerCallback('zonama:server:getItems', function(items)
+    QBCore.Functions.TriggerCallback('zonama:server:get-items', function(items)
         cb(items)
     end)
+end)
+
+RegisterNUICallback('zonama:client:create-order', function(data, cb)
+    Citizen.Trace('zonama:client:create-order' .. '\n')
+    QBCore.Functions.TriggerCallback('zonama:server:create-order', function(response)
+        cb(response)
+    end, data)
 end)
 
 exports['qb-target']:AddTargetModel(QBZonama.Monitors, {
@@ -43,11 +36,18 @@ exports['qb-target']:AddTargetModel(QBZonama.Monitors, {
         event = "zonama:client:open-nui",
         icon = "fa-brands fa-amazon",
         label = "Open Zonama",
-        price = 5
+        price = 5,
+        canInteract = function(entity)
+            return GetEntityHealth(entity) == GetEntityMaxHealth(entity)
+        end
     }},
     distance = 2.5
 })
 
 RegisterNetEvent('zonama:client:open-nui', function(data)
     toggleNuiFrame(true)
+end)
+
+RegisterNetEvent('zonama:client:close-nui', function(data)
+    toggleNuiFrame(false)
 end)

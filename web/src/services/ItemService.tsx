@@ -20,79 +20,7 @@ const fakerItems: IItem[] = [
     category_name: "Car",
   },
   {
-    id: 1,
-    name: "Shirt",
-    price: 15,
-    image: "shirt.png",
-    description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
-    category_name: "Clothes",
-  },
-  {
-    id: 2,
-    name: "Pants",
-    price: 24,
-    image: "pants.png",
-    description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
-    category_name: "Clothes",
-  },
-  {
-    id: 1,
-    name: "Shirt",
-    price: 15,
-    image: "shirt.png",
-    description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
-    category_name: "Clothes",
-  },
-  {
-    id: 2,
-    name: "Pants",
-    price: 24,
-    image: "pants.png",
-    description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
-    category_name: "Clothes",
-  },
-  {
-    id: 1,
-    name: "Shirt",
-    price: 15,
-    image: "shirt.png",
-    description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
-    category_name: "Clothes",
-  },
-  {
-    id: 2,
-    name: "Pants",
-    price: 24,
-    image: "pants.png",
-    description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
-    category_name: "Clothes",
-  },
-  {
-    id: 1,
-    name: "Shirt",
-    price: 15,
-    image: "shirt.png",
-    description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
-    category_name: "Clothes",
-  },
-  {
-    id: 2,
-    name: "Pants",
-    price: 24,
-    image: "pants.png",
-    description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
-    category_name: "Clothes",
-  },
-  {
-    id: 1,
-    name: "Shirt",
-    price: 15,
-    image: "shirt.png",
-    description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
-    category_name: "Clothes",
-  },
-  {
-    id: 2,
+    id: 3,
     name: "Mommy ?",
     price: 24,
     image: "pants.png",
@@ -100,7 +28,7 @@ const fakerItems: IItem[] = [
     category_name: "Technology",
   },
   {
-    id: 1,
+    id: 4,
     name: "Thing",
     price: 15,
     image: "shirt.png",
@@ -108,7 +36,7 @@ const fakerItems: IItem[] = [
     category_name: "Technology",
   },
   {
-    id: 2,
+    id: 5,
     name: "Stuff",
     price: 24,
     image: "pants.png",
@@ -116,8 +44,24 @@ const fakerItems: IItem[] = [
     category_name: "Technology",
   },
   {
-    id: 3,
+    id: 6,
     name: "Macbook",
+    price: 3,
+    image: "macbook.png",
+    description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
+    category_name: "Technology",
+  },
+  {
+    id: 7,
+    name: "Other Stuff",
+    price: 24,
+    image: "pants.png",
+    description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
+    category_name: "Technology",
+  },
+  {
+    id: 8,
+    name: "Weeew",
     price: 3,
     image: "macbook.png",
     description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
@@ -127,7 +71,7 @@ const fakerItems: IItem[] = [
 
 export const getItems = async (): Promise<IItem[]> => {
   return new Promise((resolve) => {
-    fetchNui<IItem[]>("getItems")
+    fetchNui<IItem[]>("zonama:client:get-items")
       .then((data) => {
         resolve(data);
       })

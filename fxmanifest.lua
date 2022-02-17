@@ -10,9 +10,9 @@ games {"gta5"}
 
 ui_page 'web/build/index.html'
 
-client_script "client/**/*"
+shared_scripts {'@qb-core/shared/locale.lua', "shared/**/*"}
 
-shared_script "shared/**/*"
+client_script "client/**/*"
 
 server_scripts {"server/**/*", '@oxmysql/lib/MySQL.lua'}
 

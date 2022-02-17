@@ -1,4 +1,6 @@
 import { Box, Button, Stack, Text, useColorModeValue } from "@chakra-ui/react";
+import { useSetRecoilState } from "recoil";
+import { addItemToCart } from "../stores/Cart";
 import { IItem } from "../stores/Items";
 
 interface Props {
@@ -6,11 +8,13 @@ interface Props {
 }
 
 const Item: React.FC<Props> = ({ item }) => {
+  const setAddItemToCart = useSetRecoilState(addItemToCart);
+
   return (
-    <Box textAlign={"center"} px={4} py={10} minW={"20vw"}>
+    <Box textAlign={"center"} px={4} minW={"20vw"}>
       <Box
         bg={useColorModeValue("white", "gray.800")}
-        boxShadow={"xl"}
+        boxShadow={"md"}
         rounded={"md"}
         overflow={"hidden"}
       >
@@ -31,22 +35,30 @@ const Item: React.FC<Props> = ({ item }) => {
           >
             {item.name}
           </Text>
-          <Stack direction={"row"} align={"center"} justify={"center"}>
-            <Text fontSize={"3xl"}>$</Text>
-            <Text fontSize={"6xl"} fontWeight={800}>
-              {item.price}
-            </Text>
-            <Text color={"gray.500"}></Text>
-          </Stack>
+          <Box
+            minW={"150px"}
+            w={"max-content"}
+            h={"150px"}
+            rounded={"xl"}
+            backgroundSize={"cover"}
+            backgroundImage={
+              'url("' +
+              "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Oahu_Landscape.jpg/640px-Oahu_Landscape.jpg" +
+              '")'
+            }
+            alt="Random Pic"
+          />
+          <Text fontSize={"sm"} fontWeight={500} p={2} px={3} rounded={"full"}>
+            ${item.price}
+          </Text>
         </Stack>
 
         <Box bg={useColorModeValue("gray.50", "gray.900")} px={6} py={10}>
-          <Text overflowY={"auto"} h={100}>
+          <Text overflowY={"auto"} maxH={100}>
             {item.description}
           </Text>
 
           <Button
-            colorScheme={"dark"}
             mt={10}
             maxW={"200px"}
             w={"full"}
@@ -55,10 +67,13 @@ const Item: React.FC<Props> = ({ item }) => {
             rounded={"md"}
             boxShadow={"0 5px 20px 0px rgb(72 187 120 / 43%)"}
             _hover={{
-              bg: "#e7951a",
+              bg: "#d78914",
             }}
             _focus={{
               bg: "#e7951a",
+            }}
+            onClick={() => {
+              setAddItemToCart(item);
             }}
           >
             Add to cart

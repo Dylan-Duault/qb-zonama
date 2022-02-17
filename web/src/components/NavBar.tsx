@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { ReactComponent as ZonamaLogo } from "../assets/svg/logo.svg";
 import { getCategories } from "../services/ItemService";
+import { selectCartState } from "../stores/Cart";
 import { ICategory } from "../stores/Categories";
 import { selectItemsState } from "../stores/Items";
 
@@ -17,6 +18,7 @@ const NavBar: React.FC = () => {
   );
 
   const items = useRecoilValue(selectItemsState);
+  const cart = useRecoilValue(selectCartState);
   const [categories, setCategories] = useState([] as ICategory[]);
 
   useEffect(() => {
@@ -63,6 +65,7 @@ const NavBar: React.FC = () => {
             navigateTo("/cart");
           }}
         >
+          {cart.items.length}
           <GiShoppingCart size={32} />
         </Button>
       </Flex>

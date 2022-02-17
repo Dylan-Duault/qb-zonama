@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS `za_orders` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `citizen_id` varchar(250) NOT NULL,
   `price` int(11) NOT NULL,
-  `created_at` datetime NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   INDEX `za_orders_citizen_id_index` (`citizen_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
@@ -52,7 +52,7 @@ INSERT INTO `za_categories` (`id`, `name`) VALUES
 
 -- Seed fake items
 INSERT INTO `za_items` (`id`, `name`, `description`, `price`, `image`, `category_id`) VALUES
-(, 'Banana', 'A yellow fruit', 10, 'banana.png', 1),
+(1, 'Banana', 'A yellow fruit', 10, 'banana.png', 1),
 (2, 'Orange', 'An orange fruit', 10, 'orange.png', 1),
 (3, 'Apple', 'A red fruit', 10, 'apple.png', 1),
 (4, 'Coca Cola', 'A soft drink', 10, 'coca-cola.png', 2),
