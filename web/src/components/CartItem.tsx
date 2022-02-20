@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Image, Spacer, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, Spacer, Text } from "@chakra-ui/react";
 import { useSetRecoilState } from "recoil";
 import { addItemToCart, removeItemFromCart } from "../stores/Cart";
 import { IItem } from "../stores/Items";

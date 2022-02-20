@@ -10,6 +10,10 @@ interface Props {
 const Item: React.FC<Props> = ({ item }) => {
   const setAddItemToCart = useSetRecoilState(addItemToCart);
 
+  const getItemImage = (): string => {
+    return `url(${item.image})`;
+  };
+
   return (
     <Box textAlign={"center"} px={4} minW={"20vw"}>
       <Box
@@ -41,11 +45,7 @@ const Item: React.FC<Props> = ({ item }) => {
             h={"150px"}
             rounded={"xl"}
             backgroundSize={"cover"}
-            backgroundImage={
-              'url("' +
-              "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Oahu_Landscape.jpg/640px-Oahu_Landscape.jpg" +
-              '")'
-            }
+            backgroundImage={getItemImage()}
             alt="Random Pic"
           />
           <Text fontSize={"sm"} fontWeight={500} p={2} px={3} rounded={"full"}>

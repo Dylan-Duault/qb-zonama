@@ -1,4 +1,4 @@
-import { Box, Grid, GridItem } from "@chakra-ui/react";
+import { Box, Grid } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useRecoilValue } from "recoil";
@@ -19,15 +19,15 @@ const Category: React.FC = () => {
 
     // setItemsFromCategory([]);
     setItemsFromCategory(_itemsFromCategory);
-  }, [key]);
+  }, [key, items]);
 
   return (
     <Box px={6} pb={10}>
-      {chunk(itemsFromCategory, 4).map((items: IItem[], index) => {
+      {chunk(itemsFromCategory, 4).map((items: IItem[], i) => {
         return (
-          <Grid templateColumns="repeat(4, 1fr)" gap={0}>
-            {items.map((item: IItem) => (
-              <Box pt={10}>
+          <Grid templateColumns="repeat(4, 1fr)" gap={0} key={i}>
+            {items.map((item: IItem, j: any) => (
+              <Box pt={10} key={j}>
                 <Item item={item}></Item>
               </Box>
             ))}

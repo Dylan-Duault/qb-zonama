@@ -5,11 +5,6 @@ local function toggleNuiFrame(shouldShow)
     SendReactMessage('setVisible', shouldShow)
 end
 
-RegisterCommand('show-nui', function()
-    toggleNuiFrame(true)
-    debugPrint('Show NUI frame')
-end)
-
 RegisterNUICallback('hideFrame', function(_, cb)
     toggleNuiFrame(false)
     debugPrint('Hide NUI frame')
@@ -24,7 +19,6 @@ RegisterNUICallback('zonama:client:get-items', function(_, cb)
 end)
 
 RegisterNUICallback('zonama:client:create-order', function(data, cb)
-    Citizen.Trace('zonama:client:create-order' .. '\n')
     QBCore.Functions.TriggerCallback('zonama:server:create-order', function(response)
         cb(response)
     end, data)

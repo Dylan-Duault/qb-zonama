@@ -50,6 +50,7 @@ const Cart: React.FC = () => {
             item={cartItem.item}
             quantity={cartItem.quantity}
             lastItem={index === uniqueItemsWithQuantity.length - 1}
+            key={index}
           ></CartItem>
         ))}
       </GridItem>
