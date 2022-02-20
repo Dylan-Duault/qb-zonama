@@ -11,7 +11,11 @@ const Item: React.FC<Props> = ({ item }) => {
   const setAddItemToCart = useSetRecoilState(addItemToCart);
 
   const getItemImage = (): string => {
-    return `url(${item.image})`;
+    const url =
+      item.image.length > 20
+        ? item.image
+        : `https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Oahu_Landscape.jpg/640px-Oahu_Landscape.jpg`;
+    return `url(${url})`;
   };
 
   return (
